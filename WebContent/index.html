@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app='mainApp'>
+<head>
+<meta charset="ISO-8859-1">
+<title>Index</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="/>
+  <link rel="stylesheet" href="/projectfrontend/css/index.css">
+  
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+		    <div class="navbar-header">
+		    <!-- 
+		      <a class="navbar-brand" href="#">Working On</a>
+		     --></div>
+		    <ul class="nav navbar-nav">
+		    
+		      <li class="active"><a href="#home">Home</a></li>
+		      
+		      <li><a href="#login" ng-hide='currentUser.username'>Login</a></li>
+		      
+		      <li><a href="#" ng-show='currentUser.username'>Welcome {{currentUser.username}}</a></li> 
+		      <li><a href="#profilepic"  ng-show='currentUser.username'><img id='img-circle' src="http://localhost:8081/projectbackend/getimage/{{currentUser.username}}" alt="Upload Picture" height="30px" width="30px" /></a></li>
+		      <li><a href="#edituser" ng-show='currentUser.username'>Edit Profile</a></li>
+		      <li><a href="" ng-click="logout()" ng-show='currentUser.username'>logout</a></li>
+		      
+		      <li class="dropdown" ng-show="currentUser.username">
+			        <a class="dropdown-toggle" data-toggle="dropdown" >Job
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			             <li><a href="#addjob" ng-show='currentUser.role == "Admin" '>Post New Job</a></li>
+			             <li><a href="#getalljobs" ng-show='currentUser.username'>All Jobs</a></li>
+			        </ul>
+			  </li>
+			  
+			  <li class="dropdown" ng-show="currentUser.username">
+			        <a class="dropdown-toggle" data-toggle="dropdown" >Blog
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			              <li><a href="#addpost" ng-show='currentUser.username'>Add Blog Post</a></li>
+			             <li><a href="#getallblogs" ng-show='currentUser.username'>All Blogs</a></li>
+			        </ul>
+			  </li>
+			  
+			  <li class="dropdown" ng-show="currentUser.username">
+			        <a class="dropdown-toggle" data-toggle="dropdown" >Friend
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			              <li><a href="#getallusers" ng-show='currentUser.username'>View all Users</a></li>
+			              <li><a href="#pendingrequests" ng-show='currentUser.username'>Show Requests</a></li>
+			              <li><a href="#listoffriends" ng-show='currentUser.username'>Friends List</a></li>
+			        </ul>
+			  </li>
+			  
+			  <li><a href="#chat" ng-show='currentUser.username' ng-click="condition='true'">Chat</a></li>
+			  
+		   </ul>
+		</div>
+</nav>
+
+<main ng-view></main>
+
+</body>
+
+  <script src="/projectfrontend/script_files/angular.min.js"></script>
+  <script src="/projectfrontend/script_files/angular-animate.js"></script>
+  <script src="/projectfrontend/script_files/angular-cookies.js"></script>
+  <script src="/projectfrontend/script_files/angular-route.js"></script>
+  <script src="/projectfrontend/script_files/jquery/jquery-3.2.1.js"></script>
+  <script src="/projectfrontend/script_files/bootstrap/bootstrap.js"></script>
+  <script src="/projectfrontend/script_files/sockjs.js"></script>
+  <script src="/projectfrontend/script_files/stomp.js"></script>
+  
+  <!-- Main Module -->
+  
+  <script src="/projectfrontend/js/mainApp.js"></script>
+
+  <!-- Controllers -->
+   
+  <script src="/projectfrontend/User/js/userController.js"></script>
+  <script src="/projectfrontend/User/js/editController.js"></script>
+  <script src="/projectfrontend/job/js/jobController.js"></script>
+  <script src="/projectfrontend/blog/js/blogController.js"></script>
+  <script src="/projectfrontend/blog/js/blogDetailController.js"></script>
+  <script src="/projectfrontend/friend/js/friendController.js"></script>
+  <script src="/projectfrontend/chat/js/chatController.js"></script>
+
+  <!-- Services -->
+
+  <script src="/projectfrontend/User/js/userService.js"></script>
+  <script src="/projectfrontend/job/js/jobService.js"></script>
+  <script src="/projectfrontend/blog/js/blogService.js"></script>
+  <script src="/projectfrontend/friend/js/friendService.js"></script>
+  <script src="/projectfrontend/chat/js/chatService.js"></script>
+
+</html>
